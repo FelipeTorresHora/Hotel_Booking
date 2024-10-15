@@ -10,12 +10,12 @@ import java.time.LocalDate;
 public class BookingDTO {
 
     private Long id;
-    private LocalDate checkInDate;
-    private LocalDate checkOutDate;
-    private int numOfAdults;
-    private int numOfChildren;
-    private int totalNumOfGuest;
+    private LocalDate checkInData;
+    private LocalDate checkOutData;
+    private int numDeAdultos;
+    private int numDeCriancas;
+    private int totalNumDeVisitantes;
     private String bookingConfirmationCode;
     private UserDTO user;
-    private QuartoDTO room;
+    private QuartoDTO quarto;
 }

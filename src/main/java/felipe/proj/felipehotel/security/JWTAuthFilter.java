@@ -1,7 +1,7 @@
 package felipe.proj.felipehotel.security;
 
 import felipe.proj.felipehotel.security.userservice.CustomUserDetailsService;
-import felipe.proj.felipehotel.security.utils.JWTUtils;
+import felipe.proj.felipehotel.utils.JWTUtils;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

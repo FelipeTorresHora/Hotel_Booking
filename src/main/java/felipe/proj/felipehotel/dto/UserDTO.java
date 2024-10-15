@@ -11,8 +11,8 @@ import java.util.List;
 public class UserDTO {
     private Long id;
     private String email;
-    private String name;
-    private String phoneNumber;
+    private String nome;
+    private String Numero;
     private String role;
     private List<BookingDTO> bookings = new ArrayList<>();
 }

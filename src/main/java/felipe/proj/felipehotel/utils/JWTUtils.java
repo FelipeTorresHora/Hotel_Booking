@@ -1,4 +1,4 @@
-package felipe.proj.felipehotel.security.utils;
+package felipe.proj.felipehotel.utils;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import org.springframework.security.core.userdetails.UserDetails;

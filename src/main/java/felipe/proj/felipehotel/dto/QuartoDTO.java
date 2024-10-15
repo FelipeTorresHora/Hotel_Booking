@@ -10,9 +10,9 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class QuartoDTO {
     private Long id;
-    private String roomType;
-    private BigDecimal roomPrice;
-    private String roomPhotoUrl;
-    private String roomDescription;
+    private String tipoQuarto;
+    private BigDecimal precoQuarto;
+    private String fotoUrlQuarto;
+    private String descricaoQuarto;
     private List<BookingDTO> bookings;
 }
