@@ -1,4 +1,4 @@
-package felipe.proj.felipehotel.service.impl;
+package felipe.proj.felipehotel.service.user;
 
 import felipe.proj.felipehotel.dto.LoginResquest;
 import felipe.proj.felipehotel.dto.Response;
@@ -6,11 +6,11 @@ import felipe.proj.felipehotel.dto.UserDTO;
 import felipe.proj.felipehotel.entidades.User;
 import felipe.proj.felipehotel.excecao.GlobalExcecao;
 import felipe.proj.felipehotel.repositorio.UserRepositorio;
-import felipe.proj.felipehotel.service.interafac.IUserService;
 import felipe.proj.felipehotel.utils.JWTUtils;
 import felipe.proj.felipehotel.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -34,7 +34,30 @@ public class UserService implements IUserService {
 
     @Override
     public Response login(LoginResquest loginRequest) {
-        return null;
+
+        Response response = new Response();
+
+        try {
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
+            var user = userRepository.findByEmail(loginRequest.getEmail()).orElseThrow(() -> new GlobalExcecao("user Not found"));
+
+            var token = jwtUtils.generateToken(user);
+            response.setStatusCode(200);
+            response.setToken(token);
+            response.setRole(user.getRole());
+            response.setExpiracaoTempo("7 Days");
+            response.setMessage("successful");
+
+        } catch (GlobalExcecao e) {
+            response.setStatusCode(404);
+            response.setMessage(e.getMessage());
+
+        } catch (Exception e) {
+
+            response.setStatusCode(500);
+            response.setMessage("Error Occurred During USer Login " + e.getMessage());
+        }
+        return response;
     }
 
     @Override
@@ -57,7 +80,27 @@ public class UserService implements IUserService {
 
     @Override
     public Response getUserBookingHistorico(String userId) {
-        return null;
+
+        Response response = new Response();
+
+
+        try {
+            User user = userRepository.findById(Long.valueOf(userId)).orElseThrow(() -> new GlobalExcecao("User Not Found"));
+            UserDTO userDTO = Utils.mapUserEntityToUserDTOPlusUserBookingsAndRoom(user);
+            response.setStatusCode(200);
+            response.setMessage("successful");
+            response.setUser(userDTO);
+
+        } catch (GlobalExcecao e) {
+            response.setStatusCode(404);
+            response.setMessage(e.getMessage());
+
+        } catch (Exception e) {
+
+            response.setStatusCode(500);
+            response.setMessage("Error getting all users " + e.getMessage());
+        }
+        return response;
     }
 
     @Override

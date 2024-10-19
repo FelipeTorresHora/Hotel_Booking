@@ -1,4 +1,4 @@
-package felipe.proj.felipehotel.service.interafac;
+package felipe.proj.felipehotel.service.user;
 
 import felipe.proj.felipehotel.dto.LoginResquest;
 import felipe.proj.felipehotel.dto.Response;
