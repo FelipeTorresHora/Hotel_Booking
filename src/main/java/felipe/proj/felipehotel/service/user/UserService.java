@@ -1,6 +1,6 @@
 package felipe.proj.felipehotel.service.user;
 
-import felipe.proj.felipehotel.dto.LoginResquest;
+import felipe.proj.felipehotel.dto.LoginRequest;
 import felipe.proj.felipehotel.dto.Response;
 import felipe.proj.felipehotel.dto.UserDTO;
 import felipe.proj.felipehotel.entidades.User;
@@ -33,7 +33,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public Response login(LoginResquest loginRequest) {
+    public Response login(LoginRequest loginRequest) {
 
         Response response = new Response();
 

@@ -4,7 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 
 import java.util.Objects;
 
-public class LoginResquest {
+public class LoginRequest {
     @NotBlank(message = "Email é obrigatório")
     private String email;
     @NotBlank(message = "Senha é obrigatório")
@@ -30,7 +30,7 @@ public class LoginResquest {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        LoginResquest that = (LoginResquest) o;
+        LoginRequest that = (LoginRequest) o;
         return Objects.equals(email, that.email) && Objects.equals(password, that.password);
     }
 
